@@ -1,21 +1,15 @@
-import Footer from "../components/footer/Footer";
-import Navbar from "../components/navbar/Navbar";
 import Tags from "../components/tags/Tags";
 import Pagination from "../components/ui/pagination/Pagination";
-import VideoGrid from "../components/video_grid/VideoGrid";
-
+import VideosGrid from "../components/videos_grid/VideosGrid";
 
 const Home = () => {
-    return (
-        <>
-            <Navbar/>
-            <Tags/>
-            <VideoGrid/>
-            <Pagination/>
-            <Footer/>
-            
-        </>
-    );
+  return (
+    <>
+      <Tags />
+      <VideosGrid />
+      <Pagination />
+    </>
+  );
 };
 
 export default Home;

@@ -1,24 +1,32 @@
+import { useDispatch, useSelector } from "react-redux";
 import Tag from "./Tag";
+import { useEffect } from "react";
+import { fetchTags } from "../../redux/features/tags/tagsSlice";
 
 
 const Tags = () => {
-    return (
-        <section>
-            <div
-                className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto"
-            >
-                <Tag/>
-                {/* <!-- selected --> */}
+    const dispatch = useDispatch();
 
-                
-                <div
-                    className="bg-blue-600 text-white px-4 py-1 rounded-full cursor-pointer"
-                >
-                    redux
-                </div>
-            </div>
-        </section>
-    );
-};
+    useEffect(() => {
+        dispatch(fetchTags())
+    }, [dispatch])
+
+    const { tags } = useSelector(state => state.tags);
+
+
+    return tags.length > 0 ? <section>
+    <div
+        className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto"
+    >
+        {
+            tags.map(tag => <Tag key={tag.id} tag={tag} />)
+        }
+
+        
+    </div>
+</section> : null;
+
+
+}
 
 export default Tags;
