@@ -4,6 +4,7 @@ import {createLogger} from 'redux-logger'
 import tagsReducer from '../features/tags/tagsSlice'
 import videoDetailsReducer from '../features/videoDetails/videoDetailsSlice'
 import relatedVideosReducer from '../features/relatedVideos/relatedVideosSlice'
+import filtersReducer from '../features/filters/filtersSlice'
 
 const logger = createLogger();
 
@@ -13,6 +14,7 @@ const store = configureStore({
         tags: tagsReducer,
         video: videoDetailsReducer,
         relatedVideos: relatedVideosReducer,
+        filters: filtersReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 })

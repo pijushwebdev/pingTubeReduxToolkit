@@ -8,14 +8,15 @@ import Error from "../ui/Error";
 
 const VideosGrid = () => {
     const dispatch = useDispatch();
+    const {tags, search} = useSelector(state => state.filters);
 
     useEffect(() => {
-        dispatch(fetchVideos())
-    }, [dispatch])
+        dispatch(fetchVideos({tags, search}))
+    }, [dispatch, tags, search])
 
     const {videos, loading, isError, error } = useSelector(state => state.videos);
 
-    let content;
+    let content = null;
 
     if(loading) content = <Loading/>
 
