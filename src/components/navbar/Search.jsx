@@ -2,16 +2,21 @@ import { useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { searched } from "../../redux/features/filters/filtersSlice";
+import { useMatch, useNavigate } from "react-router";
 
 const Search = () => {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [input, setInput] = useState('');
+  const match = useMatch('/')
 
   const handleSubmit = (e)  => {
     e.preventDefault()
     dispatch(searched(input))
-    setInput('')
+    setInput('');
+    if(!match){
+      navigate('/');
+    }
   }
   return (
     <form onSubmit={handleSubmit} className="flex items-center">

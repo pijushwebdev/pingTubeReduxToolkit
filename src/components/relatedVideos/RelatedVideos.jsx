@@ -9,7 +9,8 @@ import Error from "../ui/Error";
 const RelatedVideos = ({currentVideoId, tags = []}) => {
  
   const limit = 5;
-  const queryUrl =tags.length > 0 ? tags.map(tag => `tag_like=${tag}`).join('&').concat(`&id_ne=${currentVideoId}&_limit=${limit}`) : `id_ne=${currentVideoId}&_limit=${limit}`;
+  const queryUrl =tags.length > 0 ? tags.map(tag => `tags_like=${tag}`).join('&').concat(`&id_ne=${currentVideoId}&_limit=${limit}`) : `id_ne=${currentVideoId}&_limit=${limit}`;
+  
   const dispatch = useDispatch()
 
   const {relatedVideos, isError, error, loading } = useSelector(state => state.relatedVideos);
